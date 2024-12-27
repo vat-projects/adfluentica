@@ -63,6 +63,7 @@ const HomeHero = () => {
             <br />
             <br />
             <br />
+            <br />
             HOME NEW
             <br />
             <br />
