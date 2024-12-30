@@ -3,6 +3,7 @@ import HomeExplore from "./_components/HomeExplore";
 import HomeHero from "./_components/HomeHero";
 import HomeReady from "./_components/HomeReady";
 import HomeWhat from "./_components/HomeWhat";
+import HomeWhy from "./_components/HomeWhy";
 
 export const metadata = {
   title: "",
@@ -24,6 +25,7 @@ export default function Home() {
       <HomeWhat />
       <HomeDiscover />
       <HomeExplore />
+      <HomeWhy />
     </>
   );
 }
