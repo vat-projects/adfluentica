@@ -1,30 +1,81 @@
-<section class="home-what">
-    <div class="home-what__container _container">
-        <div class="home-what__body">
-            <div class="home-what__col-01">
-                <motion.h2
+<section class="home-explore">
+    <div class="home-explore__container _container">
+        <div class="home-explore__body">
+            <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                custom={0.2}
+                class="home-explore__title">Explore Industries</motion.h2>
+            <motion.h3
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                custom={0.2}
+                class="home-explore__subtitle">
+                FOR ADVERTISERS
+            </motion.h3>
+            <div class="home-explore__content">
+                <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeInUp}
                     custom={0.2}
-                    class="home-what__title">What is Adfluentica</motion.h2>
+                    class="home-explore__col-01">
+                    <h4 class="home-explore__label">Reach your audience with precision and ease through our trusted network of publishers.</h4>
+                    <ul class="home-explore__list">
+                        Our Offer:
+                        <li class="home-explore__item">High advertising demand to keep your inventory filled.</li>
+                        <li class="home-explore__item">Various cooperation models tailored to your preferences.</li>
+                        <li class="home-explore__item">Reliable partnerships for long-term success.</li>
+                    </ul>
+                    <Link href="#" class="home-explore__more">Learn More</Link>
+                </motion.div>
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeInUp}
                     custom={0.3}
-                    class="home-what__text">Access premium media, trusted partnerships, and impactful ad placements for effective affiliate campaigns.</motion.div>
+                    class="home-explore__col-02"></motion.div>
             </div>
-            <motion.div
+            <motion.h3
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                custom={0.4} 
-                class="home-what__col-02">
-            </motion.div>
+                custom={0.2}
+                class="home-explore__subtitle">
+                FOR PUBLISHERS
+            </motion.h3>
+            <div class="home-explore__content _last">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    custom={0.2}
+                    class="home-explore__col-01">
+                    <h4 class="home-explore__label">Monetize your traffic with premium campaigns from trusted advertisers.</h4>
+                    <ul class="home-explore__list">
+                        Our Offer:
+                        <li class="home-explore__item">High advertising demand to keep your inventory filled.</li>
+                        <li class="home-explore__item">Various cooperation models tailored to your preferences.</li>
+                        <li class="home-explore__item">Reliable partnerships for long-term success.</li>
+                    </ul>
+                    <Link href="#" class="home-explore__more">Learn More</Link>
+                </motion.div>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    custom={0.3}
+                    class="home-explore__col-02 _last"></motion.div>
+            </div>
         </div>
     </div>
 </section>

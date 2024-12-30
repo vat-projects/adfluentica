@@ -151,7 +151,7 @@
     &__body {
         display: flex;
         gap: 30px;
-        @media(max-width: 992px) { 
+        @media (max-width: 992px) {
             flex-direction: column;
             gap: 20px;
         }
@@ -175,15 +175,15 @@
     &__text {
         margin: 24px 0 0 0;
         color: var(--colors-indigo-950, #1e1b4b);
-        @include adaptiv-value('font-size', 36, 18, 1);
+        @include adaptiv-value("font-size", 36, 18, 1);
         font-style: normal;
         font-weight: 700;
-        line-height: 120%; 
+        line-height: 120%;
     }
 
     &__col-02 {
         width: 60%;
-        @include adaptiv-value('height', 479, 360, 1);
+        @include adaptiv-value("height", 479, 360, 1);
         background-image: url("/images/home/home-img-03.jpg");
         background-repeat: no-repeat;
         background-size: cover;
@@ -192,6 +192,152 @@
         @media (max-width: 992px) {
             width: 100%;
             background-image: url("/images/home/home-img-04.jpg");
+        }
+    }
+}
+
+.home-discover {
+    padding: 40px 0;
+    &__container {
+    }
+
+    &__body {
+    }
+
+    &__title {
+        color: var(--colors-blue-950, #172554);
+        @include adaptiv-value("font-size", 24, 14, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+    }
+
+    &__label {
+        @include adaptiv-value("margin-top", 47, 24, 1);
+        color: var(--colors-blue-900, #1e3a8a);
+        @include adaptiv-value("font-size", 60, 36, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 110%;
+    }
+
+    &__bubbls {
+        @include adaptiv-value("margin-top", 60, 24, 1);
+    }
+}
+
+.home-explore {
+    padding: 40px 0;
+    &__container {
+    }
+
+    &__body {
+    }
+
+    &__title {
+        color: var(--colors-blue-950, #172554);
+        @include adaptiv-value("font-size", 24, 14, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+    }
+
+    &__subtitle {
+        margin: 24px 0 24px 0;
+        color: var(--colors-blue-900, #1e3a8a);
+        @include adaptiv-value("font-size", 60, 36, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 110%;
+
+        &._last {
+            margin-top: 64px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        gap: 30px;
+        &._last {
+            flex-direction: row-reverse;
+            @media (max-width: 992px) {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 992px) {
+            flex-direction: column;
+        }
+    }
+
+    &__col-01 {
+        width: 40%;
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+    }
+
+    &__label {
+        color: var(--colors-indigo-950, #1e1b4b);
+        font-size: 36px;
+        @include adaptiv-value("font-size", 36, 18, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+    }
+
+    &__list {
+        @include adaptiv-value("margin-top", 24, 16, 1);
+        color: var(--colors-indigo-950, #1e1b4b);
+        @include adaptiv-value("font-size", 24, 14, 1);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+    }
+
+    &__item {
+        margin-left: 40px;
+        list-style: disc;
+        font-weight: 400;
+    }
+
+    &__more {
+        display: flex;
+        width: fit-content;
+        @include adaptiv-value("margin-top", 24, 16, 1);
+        border-radius: 100px;
+        background: var(--colors-blue-950, #172554);
+        padding: 12px 36px;
+        border-radius: 100px;
+
+        color: var(--colors-base-white, #fff);
+        @include adaptiv-value('font-size', 24, 16, 1);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        transition: all 0.3s ease 0s;
+
+        &:hover { 
+            background-color: #1d4ed8;
+        }
+
+        @media(max-width: 767px) {
+            padding: 8px 24px;
+        }
+    }
+
+    &__col-02 {
+        width: 60%;
+        background-image: url("/images/home/home-img-05.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-radius: 24px;
+        @include adaptiv-value("height", 600, 350, 1);
+        &._last {
+            background-image: url("/images/home/home-img-06.jpg");
+        }
+        @media (max-width: 767px) {
+            width: 100%;
         }
     }
 }
