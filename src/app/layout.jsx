@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${urbanist.className} ${roboto.className} ${spaceGrotesk.className}`}>
-
+        {/* Это уже актуальная аналитика */}
         <GoogleAnalytics gaId="G-3KC08Q4ZR7" />
         <PopupsProvider>
           <Preloader />

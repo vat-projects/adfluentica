@@ -2,9 +2,8 @@ import React from "react";
 
 const Facebook = () => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M21 8V16C21 17.3261 20.4732 18.5979 19.5355 19.5355C18.5979 20.4732 17.3261 21 16 21H8C6.67392 21 5.40215 20.4732 4.46447 19.5355C3.52678 18.5979 3 17.3261 3 16V8C3 6.67392 3.52678 5.40215 4.46447 4.46447C5.40215 3.52678 6.67392 3 8 3H16C17.3261 3 18.5979 3.52678 19.5355 4.46447C20.4732 5.40215 21 6.67392 21 8Z" stroke="#F7F7F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M11 21V12C11 9.813 11.5 8 15 8M9 13H15" stroke="#F7F7F7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.9155 13.6847L16.3714 10.7878H13.5628V8.90486C13.5628 8.11275 13.9549 7.33874 15.2088 7.33874H16.5036V4.87188C15.7496 4.75163 14.9876 4.68658 14.2239 4.67725C11.9123 4.67725 10.4032 6.06684 10.4032 8.57896V10.7878H7.84082V13.6847H10.4032V20.6915H13.5628V13.6847H15.9155Z" fill="#1E40AF" />
     </svg>
   );
 };
