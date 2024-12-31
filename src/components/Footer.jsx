@@ -68,7 +68,7 @@ const Footer = () => {
                   <Link href="mailto:info@adfluentica.com" className="footer__contact-link">info@adfluentica.com</Link>
                 </li>
                 <li className="footer__contact">86-90 Paul Street, London, Greater London, England, EC2A 4NE</li>
-                <li className="footer__contact">Office address</li>
+                <li className="footer__contact">4th floor, office number 43, 1 Ropemaker St, London EC2V 9HT, UK</li>
               </ul>
               <ul className="footer__socials">
                 <li className="footer__social">
