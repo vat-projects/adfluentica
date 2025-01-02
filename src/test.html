@@ -1,10 +1,32 @@
-<section class="home-start">
-    <div class="home-start__container _container">
-        <div class="home-start__body">
-            <h2 class="home-start__title">Start Now – <br /> Your Success Awaits</h2>
-            <div class="home-start__content">
-                <div class="home-start__col-01"></div>
-                <div class="home-start__col-02"></div>
+<section class="about-connect">
+    <div class="about-connect__container _container">
+        <div class="about-connect__body">
+            <motion.h2
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                custom={0.2}
+                class="about-connect__title">LET’S CONNECT</motion.h2>
+            <div class="about-connect__content">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    custom={0.3}
+                    class="about-connect__col-01"></motion.div>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    custom={0.4}
+                    class="about-connect__col-02">
+                    <h3 class="about-connect__label">Have questions or need more information?</h3>
+                    <div class="about-connect__text">We’re here to help. Contact us today to see how Adfluentica can transform your affiliate marketing campaigns.</div>
+                    <Link href="/contact-us" class="about-connect__link">Contact Us</Link>
+                </motion.div>
             </div>
         </div>
     </div>
