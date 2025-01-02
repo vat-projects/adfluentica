@@ -36,7 +36,7 @@ const PrivacyPolicy = async () => {
     <>
       <div className="policy-head"></div>
       <section className="policy">
-        <div className="policy__container">
+        <div className="_container">
           <div className="policy__body">
             <h1 className="policy__title">{page.title}</h1>
             <article dangerouslySetInnerHTML={{ __html: page.body }} className="policy__content" />
