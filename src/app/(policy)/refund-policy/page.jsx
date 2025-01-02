@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { locale } }) {
-  const page = await getPage("cookie-policy", locale);
+  const page = await getPage("refund-policy", locale);
 
   return {
     title: page.title,
@@ -31,7 +31,7 @@ export async function generateMetadata({ params: { locale } }) {
 }
 
 const CookiePolicy = async () => {
-  const page = await getPage("cookie-policy");
+  const page = await getPage("refund-policy");
   return (
     <>
       <div className="policy-head"></div>
