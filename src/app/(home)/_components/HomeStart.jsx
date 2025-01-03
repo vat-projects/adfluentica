@@ -13,7 +13,7 @@ const HomeStart = () => {
                     <h2 className="home-start__title">Start Now – <br /> Your Success Awaits</h2>
                     <div className="home-start__content">
                         <div className="home-start__col-01">
-                            <RequestForm />
+                            
                         </div>
                         <div className="home-start__col-02"><img src="/images/home/home-img-07.jpg" alt="image" /></div>
                     </div>

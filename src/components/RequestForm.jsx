@@ -12,7 +12,8 @@ import Snipper from "@/icons/loading/Snipper";
 // Custom Select component (unchanged)
 const CustomSelect = ({ name, options, ...props }) => {
     const { setFieldValue, setFieldTouched, errors, touched, values } = useFormikContext();
-    const selectId = useId();
+    /* const selectId = useId(); */
+    const selectId = `select-id-${name}`;
 
     const handleChange = (selectedOption) => {
         setFieldValue(name, selectedOption ? selectedOption.value : "");
@@ -41,6 +42,7 @@ const CustomSelect = ({ name, options, ...props }) => {
 function RequestForm() {
     const countryCode = useCountryCode();
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isClient, setIsClient] = useState(false); 
 
     const validationSchema = Yup.object({
         yourName: Yup.string().required("The field is required."),
@@ -123,6 +125,7 @@ function RequestForm() {
                                 )}
                             </Field>
 
+
                             <Field name="urgency">
                                 {({ field, form }) => (
                                     <div className="row _select">
@@ -130,6 +133,7 @@ function RequestForm() {
                                         <CustomSelect
                                             {...field}
                                             options={options}
+                                            name="urgency"  // Передаем name как пропс в CustomSelect
                                             className={
                                                 form.touched.urgency && form.errors.urgency
                                                     ? "invalid"
@@ -141,6 +145,7 @@ function RequestForm() {
                                     </div>
                                 )}
                             </Field>
+
 
                             <Field name="email">
                                 {({ field, form }) => (
@@ -181,17 +186,15 @@ function RequestForm() {
                                 {({ field, form }) => (
                                     <div className="row _phone">
                                         <span className="label">Your Phone</span>
-                                        <PhoneInput
-                                            country={countryCode}
-                                            value={field.value}
-                                            inputId={`${name}-phone-input`}
-                                            onChange={(value) => form.setFieldValue("phone", value)}
-                                            className={
-                                                form.touched.phone && form.errors.phone
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                        />
+                                        {/* Обратите внимание, что PhoneInput рендерится только на клиенте */}
+                                        {isClient && (
+                                            <PhoneInput
+                                                country={countryCode}
+                                                value={field.value}
+                                                onChange={(value) => form.setFieldValue("phone", value)}
+                                                className={form.touched.phone && form.errors.phone ? "invalid" : ""}
+                                            />
+                                        )}
                                         <ErrorMessage name="phone" component="div" className="error" />
                                     </div>
                                 )}
