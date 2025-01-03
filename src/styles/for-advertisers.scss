@@ -134,6 +134,7 @@
   &__body {
     display: flex;
     margin-bottom: 30px;
+    align-items: flex-start;
     @media (max-width: 1200px) {
       flex-direction: column;
       gap: 20px;
@@ -142,6 +143,14 @@
       width: 50%;
       @media (max-width: 1200px) {
         width: 100%;
+      }
+      &.col-01 {
+        position: sticky;
+        top: 116px;
+        @media (max-width: 1200px) {
+          position: relative;
+          top: unset;
+        }
       }
       h2 {
         color: #1e1b4b;
@@ -230,6 +239,7 @@
 
   &__body {
     display: flex;
+    align-items: flex-start;
     gap: 30px;
     @media (max-width: 1200px) {
       flex-direction: column;
@@ -237,8 +247,12 @@
     }
     .col-01 {
       width: calc(100% - 700px);
+      position: sticky;
+      top: 116px;
       @media (max-width: 1200px) {
         width: 100%;
+        position: relative;
+        top: unset;
       }
       h2 {
         color: #1e1b4b;
