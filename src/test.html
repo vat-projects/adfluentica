@@ -1,33 +1,64 @@
-<section class="about-connect">
-    <div class="about-connect__container _container">
-        <div class="about-connect__body">
+<section class="contacts-main">
+    <div class="contacts-main__container _container">
+        <div class="contacts-main__body">
             <motion.h2
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
                 custom={0.2}
-                class="about-connect__title">LET’S CONNECT</motion.h2>
-            <div class="about-connect__content">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeInUp}
-                    custom={0.3}
-                    class="about-connect__col-01"></motion.div>
+                class="contacts-main__title">DIRECT REQUESTS</motion.h2>
+            <div class="contacts-main__content">
+                <div class="contacts-main__col-01">
+                    <motion.ul
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={fadeInUp}
+                        custom={0.3}
+                        class="contacts-main__list">
+                        <li class="contacts-main__item">
+                            Email:
+                            <Link href="mailto:info@adfluentica.com" class="contacts-main__link">info@adfluentica.com</Link>
+                        </li>
+                        <li class="contacts-main__item">
+                            Phone:
+                            <Link href="tel:+447482191976" class="contacts-main__link">+447482191976</Link>
+                        </li>
+                    </motion.ul>
+                </div>
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeInUp}
                     custom={0.4}
-                    class="about-connect__col-02">
-                    <h3 class="about-connect__label">Have questions or need more information?</h3>
-                    <div class="about-connect__text">We’re here to help. Contact us today to see how Adfluentica can transform your affiliate marketing campaigns.</div>
-                    <Link href="/contact-us" class="about-connect__link">Contact Us</Link>
+                    class="contacts-main__col-02">
+                    <div class="contacts-main__col-03">
+                        <div class="contacts-main__address">
+                            Office:
+                            <br />
+                            4th floor, office number 43, 1 Ropemaker St, London EC2V 9HT, UK
+                        </div>
+                        {/* Iframe */}
+                    </div>
+                    <div class="contacts-main__col-04">
+                        <div class="contacts-main__address">
+                            Registration:
+                            <br />
+                            86-90 Paul Street, London, Greater London, England, EC2A 4NE
+                        </div>
+                        {/* Iframe */}
+                    </div>
                 </motion.div>
             </div>
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                custom={0.4}
+                class="contacts-main__image"></motion.div>
         </div>
     </div>
 </section>

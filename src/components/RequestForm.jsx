@@ -30,7 +30,6 @@ const CustomSelect = ({ name, options, ...props }) => {
                 value={options.find(option => option.value === values[name])}
                 className={touched[name] && errors[name] ? "invalid" : ""}
                 classNamePrefix="custom-select"
-                placeholder="Select..."
             />
             {touched[name] && errors[name] && (
                 <div className="error">{errors[name]}</div>
@@ -42,7 +41,6 @@ const CustomSelect = ({ name, options, ...props }) => {
 function RequestForm() {
     const countryCode = useCountryCode();
     const [isSuccess, setIsSuccess] = useState(false);
-    const [isClient, setIsClient] = useState(false); 
 
     const validationSchema = Yup.object({
         yourName: Yup.string().required("The field is required."),
@@ -140,7 +138,6 @@ function RequestForm() {
                                                     : ""
                                             }
                                             classNamePrefix="custom-select"
-                                            placeholder="Select..."
                                         />
                                     </div>
                                 )}
@@ -186,15 +183,17 @@ function RequestForm() {
                                 {({ field, form }) => (
                                     <div className="row _phone">
                                         <span className="label">Your Phone</span>
-                                        {/* Обратите внимание, что PhoneInput рендерится только на клиенте */}
-                                        {isClient && (
-                                            <PhoneInput
-                                                country={countryCode}
-                                                value={field.value}
-                                                onChange={(value) => form.setFieldValue("phone", value)}
-                                                className={form.touched.phone && form.errors.phone ? "invalid" : ""}
-                                            />
-                                        )}
+                                        <PhoneInput
+                                            country={countryCode}
+                                            value={field.value}
+                                            
+                                            onChange={(value) => form.setFieldValue("phone", value)}
+                                            className={
+                                                form.touched.phone && form.errors.phone
+                                                    ? "invalid"
+                                                    : ""
+                                            }
+                                        />
                                         <ErrorMessage name="phone" component="div" className="error" />
                                     </div>
                                 )}
