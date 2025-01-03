@@ -3,7 +3,7 @@ import "@/styles/industry-focus.scss";
 import IndustryHero from "./_components/IndustryHero";
 import industries from "@/lib/industries";
 import IndustriesLoop from "./_components/IndustriesLoop";
-import IndustryConnect from "./_components/industryConnect";
+import IndustryConnect from "./_components/IndustryConnect";
 
 export const metadata = {
   title: "Industries We Serve | Adfluentica",
