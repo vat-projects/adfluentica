@@ -3,7 +3,7 @@ import { Urbanist, Roboto, Space_Grotesk } from "next/font/google";
 import "@/styles/base.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
+///import Preloader from "@/components/Preloader";
 /* import RequestPopup from "@/components/RequestPopup"; */
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { PopupsProvider } from "@/context/PopupsContext";
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         {/* Это уже актуальная аналитика */}
         <GoogleAnalytics gaId="G-3KC08Q4ZR7" />
         <PopupsProvider>
-          <Preloader />
+          {/* <Preloader /> */}
           <Header />
           <main className="site">{children}</main>
           <Footer />
