@@ -11,7 +11,7 @@ import Snipper from "@/icons/loading/Snipper";
 // CustomSelect компонент
 const CustomSelect = ({ name, options, ...props }) => {
     const { setFieldValue, setFieldTouched, errors, touched, values } = useFormikContext();
-    const selectId = useId();  // useId теперь доступен
+    const selectId = useId(); 
 
     const handleChange = (selectedOption) => {
         setFieldValue(name, selectedOption ? selectedOption.value : "");
@@ -29,9 +29,9 @@ const CustomSelect = ({ name, options, ...props }) => {
                 classNamePrefix="react-select"
                 instanceId={selectId}
             />
-            {touched[name] && errors[name] ? (
+            {/* {touched[name] && errors[name] ? (
                 <div className="error">{errors[name]}</div>
-            ) : null}
+            ) : null} */}
         </div>
     );
 };
