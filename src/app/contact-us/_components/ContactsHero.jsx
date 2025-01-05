@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "@/styles/contacts.scss";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
+import FormContacts from "@/components/FormContacts";
 
 const ContactsHero = () => {
     return (
@@ -39,7 +40,9 @@ const ContactsHero = () => {
                             viewport={{ once: true }}
                             variants={fadeInUp}
                             custom={0.5}
-                            className="contacts-hero__col-02"></motion.div>
+                            className="contacts-hero__col-02">
+                                <FormContacts />
+                            </motion.div>
                     </div>
                 </div>
             </div>

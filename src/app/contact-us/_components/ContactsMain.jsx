@@ -5,6 +5,7 @@ import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+
 const ContactsMain = () => {
     return (
         <section className="contacts-main">
@@ -67,7 +68,8 @@ const ContactsMain = () => {
                         viewport={{ once: true }}
                         variants={fadeInUp}
                         custom={0.4}
-                        className="contacts-main__image"></motion.div>
+                        className="contacts-main__image">
+                    </motion.div>
                 </div>
             </div>
         </section>
