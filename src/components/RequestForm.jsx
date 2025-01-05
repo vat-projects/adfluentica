@@ -1,19 +1,17 @@
-"use client";
 import React, { useState, useId } from "react";
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
+import { Formik, Form, Field, useFormikContext } from "formik";
 import * as Yup from "yup";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
-import useCountryCode from "@/utils/useCountryCode";
 import Select from "react-select";
+import useCountryCode from "@/utils/useCountryCode";
 import Link from "next/link";
 import Snipper from "@/icons/loading/Snipper";
 
-// Custom Select component (unchanged)
+// CustomSelect компонент
 const CustomSelect = ({ name, options, ...props }) => {
     const { setFieldValue, setFieldTouched, errors, touched, values } = useFormikContext();
-    /* const selectId = useId(); */
-    const selectId = `select-id-${name}`;
+    const selectId = useId();  // useId теперь доступен
 
     const handleChange = (selectedOption) => {
         setFieldValue(name, selectedOption ? selectedOption.value : "");
@@ -26,14 +24,14 @@ const CustomSelect = ({ name, options, ...props }) => {
                 {...props}
                 options={options}
                 onChange={handleChange}
-                inputId={`react-select-${selectId}`}
                 value={options.find(option => option.value === values[name])}
                 className={touched[name] && errors[name] ? "invalid" : ""}
-                classNamePrefix="custom-select"
+                classNamePrefix="react-select"
+                instanceId={selectId}
             />
-            {touched[name] && errors[name] && (
+            {touched[name] && errors[name] ? (
                 <div className="error">{errors[name]}</div>
-            )}
+            ) : null}
         </div>
     );
 };
@@ -41,26 +39,23 @@ const CustomSelect = ({ name, options, ...props }) => {
 function RequestForm() {
     const countryCode = useCountryCode();
     const [isSuccess, setIsSuccess] = useState(false);
+    const [isFormVisible, setIsFormVisible] = useState(true);
 
     const validationSchema = Yup.object({
         yourName: Yup.string().required("The field is required."),
-        email: Yup.string()
-            .email("Please enter a valid email address.")
-            .required("The field is required."),
+        are: Yup.string().required("The field is required."),
+        email: Yup.string().email("Invalid email address.").required("The field is required."),
         phone: Yup.string().required("The field is required."),
-        activity: Yup.string().required("The field is required."),
         message: Yup.string().required("The field is required."),
-        urgency: Yup.string().required("Select an option."),
         agreeToPolicy: Yup.boolean().oneOf([true], "You must agree to the Privacy Policy."),
     });
 
     const initialValues = {
         yourName: "",
-        activity: "",
+        are: "",
         email: "",
         phone: "",
         message: "",
-        urgency: "",
         agreeToPolicy: false,
     };
 
@@ -79,6 +74,7 @@ function RequestForm() {
                     resetForm();
                     setStatus({ success: true });
                     setIsSuccess(true);
+                    setIsFormVisible(false);
                 }, 400);
             } else {
                 setStatus({ success: false });
@@ -91,167 +87,127 @@ function RequestForm() {
     };
 
     const options = [
+        { value: "", label: "" },
         { value: "advertiser", label: "Advertiser" },
         { value: "publisher", label: "Publisher" },
     ];
 
     return (
         <div className="request-form">
-            <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
-                {({ isSubmitting, status, errors, touched }) => (
-                    <div className="wrapper">
-                        <Form className="form">
-                            <Field name="yourName">
-                                {({ field, form }) => (
-                                    <div className="row">
-                                        <span className="label">Your Name</span>
-                                        <input
-                                            {...field}
-                                            type="text"
-                                            className={
-                                                form.touched.yourName && form.errors.yourName
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                        />
-                                        <ErrorMessage name="yourName" component="div" className="error" />
-                                    </div>
-                                )}
-                            </Field>
+            {isFormVisible ? (
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
+                >
+                    {({ isSubmitting, status, errors, touched }) => (
+                        <div className="wrapper">
+                            <Form className="form">
 
+                                <div className={`row ${touched.yourName && errors.yourName ? "invalid" : ""}`}>
+                                    <span className="label">Your Name</span>
+                                    <Field name="yourName">
+                                        {({ field }) => <input {...field} type="text" />}
+                                    </Field>
+                                </div>
 
-                            <Field name="urgency">
-                                {({ field, form }) => (
-                                    <div className="row _select">
-                                        <span className="label">You Are</span>
-                                        <CustomSelect
-                                            {...field}
-                                            options={options}
-                                            name="urgency"  // Передаем name как пропс в CustomSelect
-                                            className={
-                                                form.touched.urgency && form.errors.urgency
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                            classNamePrefix="custom-select"
-                                        />
-                                    </div>
-                                )}
-                            </Field>
+                                <div className={`row _select ${touched.are && errors.are ? "invalid" : ""}`}>
+                                    <span className="label">Your Are</span>
+                                    <Field name="are">
+                                        {({ field, form }) => (
+                                            <CustomSelect
+                                                name={field.name}
+                                                options={options}
+                                                value={options.find(option => option.value === field.value)}
+                                                onChange={(selectedOption) => form.setFieldValue(field.name, selectedOption.value)}
+                                            />
+                                        )}
+                                    </Field>
+                                </div>
 
+                                <div className={`row _phone ${touched.phone && errors.phone ? "invalid" : ""}`}>
+                                    <span className="label">Your Phone</span>
+                                    <Field name="phone">
+                                        {({ field }) => (
+                                            <PhoneInput
+                                                country={countryCode}
+                                                value={field.value}
+                                                onChange={(value) => field.onChange({ target: { name: "phone", value } })}
+                                            />
+                                        )}
+                                    </Field>
+                                </div>
 
-                            <Field name="email">
-                                {({ field, form }) => (
-                                    <div className="row">
-                                        <span className="label">Your Mail</span>
-                                        <input
-                                            {...field}
-                                            type="email"
-                                            className={
-                                                form.touched.email && form.errors.email
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                        />
-                                        <ErrorMessage name="email" component="div" className="error" />
-                                    </div>
-                                )}
-                            </Field>
+                                <div className={`row ${touched.email && errors.email ? "invalid" : ""}`}>
+                                    <span className="label">Your Email</span>
+                                    <Field name="email">
+                                        {({ field }) => <input {...field} type="email" />}
+                                    </Field>
+                                </div>
 
-                            <Field name="message">
-                                {({ field, form }) => (
-                                    <div className="row _textarea">
-                                        <span className="label">Your Message</span>
-                                        <textarea
-                                            {...field}
-                                            className={
-                                                form.touched.message && form.errors.message
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                        />
-                                        <ErrorMessage name="message" component="div" className="error" />
-                                    </div>
-                                )}
-                            </Field>
+                                <div className="row">
+                                    <span className="label">Your Message</span>
+                                    <Field name="message">
+                                        {({ field }) => <input {...field} />}
+                                    </Field>
+                                </div>
 
-                            <Field name="phone">
-                                {({ field, form }) => (
-                                    <div className="row _phone">
-                                        <span className="label">Your Phone</span>
-                                        <PhoneInput
-                                            country={countryCode}
-                                            value={field.value}
-                                            
-                                            onChange={(value) => form.setFieldValue("phone", value)}
-                                            className={
-                                                form.touched.phone && form.errors.phone
-                                                    ? "invalid"
-                                                    : ""
-                                            }
-                                        />
-                                        <ErrorMessage name="phone" component="div" className="error" />
-                                    </div>
-                                )}
-                            </Field>
-
-                            <div className="row _policy">
-                                <Field name="agreeToPolicy">
-                                    {({ field, form }) => (
-                                        <div className="wrapper">
-                                            <label
-                                                className={`checkbox-label ${field.value ? "_active" : ""} ${form.touched.agreeToPolicy && form.errors.agreeToPolicy
-                                                    ? "invalid"
-                                                    : ""
-                                                    }`}
-                                            >
-                                                <input
-                                                    {...field}
-                                                    type="checkbox"
-                                                    checked={field.value}
-                                                    className={
-                                                        form.touched.agreeToPolicy && form.errors.agreeToPolicy
-                                                            ? "invalid"
-                                                            : ""
-                                                    }
-                                                />
+                                <div className={`row _policy ${touched.agreeToPolicy && errors.agreeToPolicy ? "invalid" : ""}`}>
+                                    <Field name="agreeToPolicy">
+                                        {({ field }) => (
+                                            <label className={`checkbox-label ${field.value ? "_active" : ""}`}>
+                                                <input {...field} type="checkbox" />
                                                 <span>
-                                                    I accept the <Link href="/terms-of-service">Terms of Service</Link> and understand that my data will be securely stored in accordance with the policy.
+                                                    I accept the <Link href="/terms-of-service">Terms of Service</Link> and
+                                                    understand that my data will be securely stored in accordance with the policy.
                                                 </span>
                                             </label>
-                                            <ErrorMessage name="agreeToPolicy" component="div" className="error" />
-                                        </div>
-                                    )}
-                                </Field>
-                            </div>
+                                        )}
+                                    </Field>
+                                </div>
 
-                            <button
-                                type="submit"
-                                className="button"
-                                disabled={isSubmitting}
-                            >
-                                Apply Now
-                            </button>
-                            {isSubmitting && (
-                                <div className="loading-icon">
-                                    <Snipper />
+                                {Object.keys(errors).length > 0 && (
+                                    <span className="general-error">Please correct the errors above.</span>
+                                )}
+
+                                <button type="submit" className="button" disabled={isSubmitting}>
+                                    Submit
+                                </button>
+                                {isSubmitting && (
+                                    <div className="loading-icon">
+                                        <Snipper />
+                                    </div>
+                                )}
+                            </Form>
+                            {status && status.success && (
+                                <div className="success-message">
+                                    <span>Thank you for your request!</span>
+                                    We will review it and contact you shortly.
+                                    <button
+                                        className="button"
+                                        onClick={() => window.location.reload()}
+                                    >
+                                        Return
+                                    </button>
                                 </div>
                             )}
-                        </Form>
-                        {isSuccess && (
-                            <div className="success-message">
-                                Thank you for your request to join Adfluentica!
-                                <br />
-                                We've received your request and will review it shortly.
-                            </div>
-                        )}
+                        </div>
+                    )}
+                </Formik>
+            ) : (
+                <div className="success-message">
+                    <div className="success-message__wrapper">
+                        <span>Thank you for your request!</span>
+                        We will review it and contact you shortly.
+                        <button
+                            className="button"
+                            onClick={() => window.location.reload()}
+                        >
+                            Return
+                        </button>
                     </div>
-                )}
-            </Formik>
+                </div>
+            )}
         </div>
     );
 }

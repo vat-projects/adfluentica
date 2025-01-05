@@ -9,9 +9,8 @@ export async function POST(request) {
       yourName,
       email,
       phone,
-      activity,
       message,
-      urgency,
+      are,
     } = bodyJSON;
 
     const transporter = nodemailer.createTransport({
@@ -32,9 +31,8 @@ export async function POST(request) {
       text: `Name: ${yourName}
 Email: ${email}
 Phone: ${phone}
-Activity: ${activity}
-message: ${message}
-Urgency: ${urgency}`,
+Message: ${message}
+Are: ${are}`,
     };
 
     const mailOptionsClient = {
@@ -53,7 +51,7 @@ Urgency: ${urgency}`,
                     <td style="padding: 50px 40px; font-family: Roboto, sans-serif; color:#0A0A0A;">
                         <h2 style="text-align: left; font-size: 20px;">Dear ${yourName},</h2>
                         <p style="font-size: 16px; line-height: 19px;">Thank you for submitting your request for a consultation with Adfluentica. We appreciate your interest in discussing how we can help your business grow.</p>
-                        <p style="font-size: 16px; line-height: 19px;">Our team is currently reviewing your request and will reach out to you soon to discuss your specific messages and how we can address them. Your urgency level has been noted as <span style="color: #008967; font-weight: 600;">${urgency}</span>, and we will prioritise your inquiry accordingly.</p>
+                        <p style="font-size: 16px; line-height: 19px;">Our team is currently reviewing your request and will reach out to you soon to discuss your specific messages and how we can address them. Your are level has been noted as <span style="color: #008967; font-weight: 600;">${are}</span>, and we will prioritise your inquiry accordingly.</p>
                         <p style="font-size: 16px; line-height: 19px;">If you have any immediate questions or additional information to share, please don't hesitate to contact us at <a href="mailto:info@adfluentica.com" style="color: #008967; font-weight: 600;text-decoration: underline;">info@adfluentica.com</a>.</p>
                         <p style="font-size: 16px; line-height: 19px;">Thank you for choosing Adfluentica. We look forward to connecting with you!</p>
                         <p style="font-size: 16px; line-height: 19px; font-weight: 600;">
