@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "@/styles/home/home.scss";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
+import FormAdvertisers from "@/components/FormAdvertisers";
 
 const AdvertiserStart = () => {
   return (
@@ -14,8 +15,8 @@ const AdvertiserStart = () => {
             YOUR PROJECT
           </h2>
           <div className="home-start__content">
-            <div className="home-start__col-01"></div>
-            <div className="home-start__col-02"></div>
+            <div className="home-start__col-01"><FormAdvertisers /></div>
+            <div className="home-start__col-02"><img src="/images/home/home-img-07.jpg" alt="image" /></div>
           </div>
         </div>
       </div>
