@@ -1,0 +1,29 @@
+@import "mixin";
+
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  animation: marquee 60s linear infinite;
+}
+
+.marquee img {
+  width: auto;
+  @media (max-width: 992px){
+    height: 286px;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
