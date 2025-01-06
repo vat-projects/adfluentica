@@ -14,7 +14,7 @@ export const metadata = {
     title: "Affiliate Marketing FAQ | Adfluentica",
     description:
       "Discover answers to your affiliate marketing questions. Learn about traffic sources, campaign models, quality control, and tools for success with Adfluentica.",
-    //images: "",
+    images: "/images/meta-banner.jpg",
   },
 };
 

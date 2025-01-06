@@ -6,14 +6,14 @@ import AboutSimplicity from "./_components/AboutSimplicity";
 
 
 export const metadata = {
-    title: "",
+    title: "Affiliate Marketing Platform I Adfluentica",
     description:
-        "",
+        "Explore how to simplify affiliate marketing with trusted partnerships, flexible campaigns, and a frictionless ecosystem. Learn how Adfluentica delivers results.",
     openGraph: {
-        title: "",
+        title: "Affiliate Marketing Platform I Adfluentica",
         description:
-            "",
-        images: "",
+            "Explore how to simplify affiliate marketing with trusted partnerships, flexible campaigns, and a frictionless ecosystem. Learn how Adfluentica delivers results.",
+        images: "/images/meta-banner.jpg",
     },
 };
 

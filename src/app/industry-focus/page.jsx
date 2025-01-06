@@ -13,7 +13,7 @@ export const metadata = {
     title: "Industries We Serve | Adfluentica",
     description:
       "Explore Adfluentica's tailored affiliate marketing solutions for finance, entertainment, education, health, real estate, technology, travel, and more. Let’s drive your success!",
-    //images: "",
+    images: "/images/meta-banner.jpg",
   },
 };
 

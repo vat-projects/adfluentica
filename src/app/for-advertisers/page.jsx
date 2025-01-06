@@ -16,7 +16,7 @@ export const metadata = {
     title: "Affiliate Marketing Solutions for Advertisers | Adfluentica",
     description:
       "Discover how Adfluentica empowers advertisers with impactful campaigns, real-time tracking, anti-fraud systems, and tailored creative development. Drive results today!",
-    //images: "",
+    images: "/images/meta-banner.jpg",
   },
 };
 

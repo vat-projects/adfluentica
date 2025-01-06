@@ -8,14 +8,14 @@ import HomeWhy from "./_components/HomeWhy";
 import HomeWork from "./_components/HomeWorks";
 
 export const metadata = {
-  title: "",
+  title: "Affiliate Marketing Solutions for Businesses | Adfluentica",
   description:
-    "",
+    "Explore how Adfluentica transforms affiliate marketing with tailored strategies, powerful tools, and proven results. Start achieving your goals today!",
   openGraph: {
-    title: "",
+    title: "Affiliate Marketing Solutions for Businesses | Adfluentica",
     description:
-      "",
-    images: "",
+      "Explore how Adfluentica transforms affiliate marketing with tailored strategies, powerful tools, and proven results. Start achieving your goals today!",
+      images: "/images/meta-banner.jpg",
   },
 };
 

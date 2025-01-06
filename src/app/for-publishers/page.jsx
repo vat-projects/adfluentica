@@ -15,7 +15,7 @@ export const metadata = {
     title: "Affiliate Marketing Opportunities for Publishers | Adfluentica",
     description:
       "Start monetizing your media with Adfluentica! Explore diverse campaigns, ready-to-use advertising resources, and reliable tracking to maximize revenue.",
-    //images: "",
+    images: "/images/meta-banner.jpg",
   },
 };
 
