@@ -61,7 +61,7 @@
       border-radius: 100px;
 
       color: var(--colors-base-white, #fff);
-      @include adaptiv-value("font-size", 24, 16, 1);
+      @include adaptiv-value("font-size", 24, 24, 1);
       font-style: normal;
       font-weight: 700;
       line-height: 130%;
@@ -72,7 +72,7 @@
       }
 
       @media (max-width: 767px) {
-        padding: 8px 24px;
+        padding: 12px 24px;
       }
     }
   }
