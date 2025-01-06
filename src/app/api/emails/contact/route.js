@@ -41,10 +41,10 @@ message: ${message}`,
       to: email,
       subject: "Thank You for Contacting Adfluentica",
       html: `
-      <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif; border-right: 1px solid #222222; border-left: 1px solid #222222;">
+      <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif;">
     <thead>
         <tr>
-            <th style="background-image: url('https://adfluentica.com/images/email-header.jpg'); background-size: cover;background-position: center center; background-repeat: no-repeat; height: 117px;"></th>
+            <th style="background-image: url('https://adfluentica.com/images/email-header.jpg'); background-size: contain;background-position: center center; background-repeat: no-repeat; height: 102px;"></th>
         </tr>
     </thead>
     <tbody>
@@ -62,20 +62,34 @@ message: ${message}`,
             </td>
         </tr>
     </tbody>
-    <tfoot>
-        <tr>
-            <td style="background-color: #333333; font-weight: 600; font-family: Roboto, sans-serif;padding: 30px 0;">
-                <a href="https://adfluentica.com/"><img src="https://adfluentica.com/images/email-footer.jpg" alt="Adfluentica"></a>
-            </td>
-        </tr>
-    </tfoot>
+   <tfoot>
+    <tr>
+        <td colspan="2" style="width: 50%; background-image: url('https://adfluentica.com/images/email-footer.jpg'); background-size: contain; background-position: center; background-repeat: no-repeat; height: 102px; text-align: center; padding: 0;">
+            <table style="width: 100%; table-layout: fixed; border-collapse: collapse;">
+                <tr>
+                    <td>
+                        
+                    </td>
+                    <td style="width: 50%; text-align: start; vertical-align: middle;">
+                        <ul style="margin:0;padding:0;">
+                          <li style="list-style: disc; color: #1E40AF; font-size: 10px;line-height: 12px;"><b>Registration:</b> <span style="color: #000000;">86-90 Paul Street, London, <br/>  Greater London, England, EC2A 4NE</span></li>
+                          <li style="list-style: disc; color: #1E40AF; font-size: 10px;line-height: 12px;"<b>Email:</b> <a href="mailto:info@adfluentica.com" style="color: #000;">info@adfluentica.com</a></li>
+                          <li style="list-style: disc; color: #1E40AF; font-size: 10px;line-height: 12px;"><b>Phone:</b> <a href="tel:+447482191976" style="color: #000;">+447482191976</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</tfoot>
+
 </table>
       `,
     };
 
     // Отправка электронной почты получателю и клиенту
     await transporter.sendMail(mailOptionsRecipient);
-    await transporter.sendMail(mailOptionsClient); 
+    await transporter.sendMail(mailOptionsClient);
 
     return NextResponse.json({ message: "Success: emails were sent" });
   } catch (error) {
