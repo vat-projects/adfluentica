@@ -39,7 +39,7 @@ message: ${message}`,
     const mailOptionsClient = {
       from: '"Adfluentica" <noreply@adfluentica.com>',
       to: email,
-      subject: "Thank You for Contacting Adfluentica",
+      subject: "Your Request Received",
       html: `
       <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif;">
     <thead>
