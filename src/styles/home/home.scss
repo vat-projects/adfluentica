@@ -27,7 +27,7 @@
 
   &__image {
     @include adaptiv-value("height", 479, 360, 1);
-    background-image: url("/images/home/home-img-01.jpg");
+    background-image: url("/images/home/hero.webp");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -35,7 +35,7 @@
     position: relative;
     z-index: 30;
     @media (max-width: 767px) {
-      background-image: url("/images/home/home-img-02.jpg");
+      background-image: url("/images/home/heroMob.webp");
     }
   }
 
