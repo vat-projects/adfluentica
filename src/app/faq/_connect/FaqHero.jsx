@@ -17,6 +17,7 @@ const FaqHero = () => {
             className="faq-hero__title"
           >
             FAQ
+            <span>Learn how Adfluentica works.</span>
           </motion.h1>
           <motion.div
             initial="hidden"
