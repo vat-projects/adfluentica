@@ -4,6 +4,7 @@ import "@/styles/header.scss";
 import "@/styles/base.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RequestButton from "./RequestButton";
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -77,9 +78,10 @@ const Header = () => {
                   <img src="/images/icon-open.svg" alt="icon-open" className="open" />
                   <img src="/images/icon-close.svg" alt="icon-close" className="close" />
                 </button>
-                <Link href="#" className="header__join">
-                  JOIN
-                </Link>
+                <RequestButton
+                  className={"header__join"}
+                  text={"JOIN"}
+                />
               </div>
             </div>
             <div className="header__menu">
