@@ -10,13 +10,6 @@ const HomeExplore = () => {
         <section className="home-explore">
             <div className="home-explore__container _container">
                 <div className="home-explore__body">
-                    <motion.h2
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeInUp}
-                        custom={0.2}
-                        className="home-explore__title">Explore Industries</motion.h2>
                     <motion.h3
                         initial="hidden"
                         whileInView="visible"
@@ -41,7 +34,7 @@ const HomeExplore = () => {
                                 <li className="home-explore__item">Various cooperation models tailored to your preferences.</li>
                                 <li className="home-explore__item">Reliable partnerships for long-term success.</li>
                             </ul>
-                            <Link href="#" className="home-explore__more">Learn More</Link>
+                            <Link href="/for-advertisers" className="home-explore__more">Learn More</Link>
                         </motion.div>
                         <motion.div
                             initial="hidden"
@@ -75,7 +68,7 @@ const HomeExplore = () => {
                                 <li className="home-explore__item">Various cooperation models tailored to your preferences.</li>
                                 <li className="home-explore__item">Reliable partnerships for long-term success.</li>
                             </ul>
-                            <Link href="#" className="home-explore__more">Learn More</Link>
+                            <Link href="/for-publishers" className="home-explore__more">Learn More</Link>
                         </motion.div>
                         <motion.div
                             initial="hidden"
