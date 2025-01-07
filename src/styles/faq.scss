@@ -190,7 +190,6 @@
           flex-direction: column;
           gap: 24px;
         }
-
         > div {
           &.opened {
             .inner {
@@ -199,13 +198,22 @@
                   transform: rotate(-180deg);
                 }
               }
+              .faq-content{
+                height: auto;
+              }
             }
           }
           .inner {
+            transition: all ease-in-out 0.5s;
             background: #eff6ff;
             border-radius: 24px;
             padding: 24px;
             cursor: pointer;
+            &.opened {
+              .faq-content {
+                height: auto;
+              }
+            }
             .top {
               display: flex;
               align-items: center;
@@ -228,13 +236,17 @@
               }
             }
             .faq-content {
-              transition: all ease-in-out 0.5s;
+              
               padding: 10px 0 0 0;
               color: #000000;
               font-size: 20px;
               font-weight: 400;
               line-height: 1.2;
               text-align: left;
+              height: 0;
+              overflow: hidden;
+              transition: all ease-in-out 0.5s;
+
               @media (max-width: 767px) {
                 font-size: 16px;
               }
