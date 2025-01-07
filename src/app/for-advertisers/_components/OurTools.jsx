@@ -1,4 +1,5 @@
 "use client";
+import RequestButton from "@/components/RequestButton";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -18,9 +19,10 @@ const OurTools = () => {
             className="col-01"
           >
             <h2>OUR TOOLS</h2>
-            <Link href="#" className="desktop">
-              Try Now
-            </Link>
+            <span className="desktop">
+              <RequestButton text={"Try now"} />
+            </span>
+            
           </motion.div>
           <div className="col-02">
             <motion.div
@@ -83,9 +85,9 @@ const OurTools = () => {
                 right audience at the right time and place.
               </p>
             </motion.div>
-            <Link href="#" className="mobile">
-              Try Now
-            </Link>
+            <span className="mobile">
+              <RequestButton text={"Try now"} />
+            </span>
           </div>
         </div>
         <motion.div

@@ -166,7 +166,20 @@
         line-height: 1;
         text-align: left;
       }
-      a {
+      .mobile {
+        display: none;
+      }
+      @media (max-width: 992px) {
+        .mobile {
+          display: flex;
+          width: 165px;
+          height: 55px;
+        }
+        .desktop {
+          display: none;
+        }
+      }
+      button {
         display: flex;
         width: 165px;
         height: 55px;
@@ -179,20 +192,6 @@
         font-weight: 700;
         line-height: 1;
         text-align: left;
-
-        &.mobile {
-          display: none;
-        }
-        @media (max-width: 992px) {
-          &.mobile {
-            display: flex;
-            width: 165px;
-            height: 55px;
-          }
-          &.desktop {
-            display: none;
-          }
-        }
       }
       &.col-02 {
         display: flex;
