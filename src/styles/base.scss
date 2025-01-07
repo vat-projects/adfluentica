@@ -327,7 +327,7 @@ body {
           font-style: normal;
           font-weight: 400;
           line-height: 140%;
-          z-index: 30;
+          /* z-index: 30; */
         }
 
         input {
@@ -337,6 +337,7 @@ body {
           grid-column-start: span 2;
           border: none;
           padding: 0;
+          height: fit-content;
           border-radius: 0;
 
           .checkbox-label {
@@ -613,6 +614,8 @@ body {
   padding: 64px 40px;
   @media (max-width: 992px) {
     padding: 40px 16px;
+    height: 100%;
+    overflow: auto;
   }
 
   &__form {
@@ -680,6 +683,7 @@ body {
           @media (max-width: 767px) {
             display: flex;
             flex-direction: column;
+            width: 100%;
           }
           .row {
             border: 1px solid #172554;
@@ -699,7 +703,7 @@ body {
               font-style: normal;
               font-weight: 400;
               line-height: 140%;
-              z-index: 30;
+              /* z-index: 30; */
             }
 
             input {
@@ -1012,7 +1016,7 @@ body {
           font-style: normal;
           font-weight: 400;
           line-height: 140%;
-          z-index: 30;
+          /* z-index: 30; */
         }
 
         input {
@@ -1023,6 +1027,7 @@ body {
           border: none;
           padding: 0;
           border-radius: 0;
+          height: fit-content;
 
           .checkbox-label {
             cursor: pointer;
@@ -1325,7 +1330,7 @@ body {
           font-style: normal;
           font-weight: 400;
           line-height: 140%;
-          z-index: 30;
+          /* z-index: 30; */
         }
 
         input {
@@ -1336,6 +1341,7 @@ body {
           border: none;
           padding: 0;
           border-radius: 0;
+          height: fit-content;
 
           &.invalid {
             .checkbox-label {

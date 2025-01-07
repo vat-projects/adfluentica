@@ -89,6 +89,21 @@ const Header = () => {
               <div className="col-02">
                 <ul className="list">
                   <li className="li">
+                    <Link href="/for-advertisers" className="link">
+                      For Advertisers
+                    </Link>
+                  </li>
+                  <li className="li">
+                    <Link href="/for-publishers" className="link">
+                      For Publishers
+                    </Link>
+                  </li>
+                  <li className="li">
+                    <Link href="/industry-focus" className="link">
+                      Industry Focus
+                    </Link>
+                  </li>
+                  <li className="li">
                     <Link href="/faq" className="link">FAQ</Link>
                   </li>
                   <li className="li">

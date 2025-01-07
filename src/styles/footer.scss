@@ -180,7 +180,8 @@
         }
 
         @media(max-width: 767px) { 
-            gap: 30px;
+            row-gap: 30px;
+            column-gap: 8px;
             grid-template-columns: minmax(auto, 50%) minmax(auto, 50%);
         }
     }
@@ -213,6 +214,10 @@
 
         @media (max-width: 1200px) {
             justify-content: flex-start;
+        }
+
+        @media(max-width: 389px) { 
+            font-size: 14px;
         }
     }
 
