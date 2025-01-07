@@ -3,19 +3,14 @@ import React, { useState, useEffect } from "react";
 import "@/styles/about.scss";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
+import { Parallax } from "react-parallax";
 
 const AboutHero = () => {
     return (
         <section className="about-hero">
             <div className="about-hero__container _container">
                 <div className="about-hero__body">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeInUp}
-                        custom={0.2}
-                        className="about-hero__image-01"></motion.div>
+                    <Parallax bgImage={'/images/about/about-img-01.jpg'} strength={150} className="parallax-custom about-hero__image-01"></Parallax>
                     <motion.h1
                         initial="hidden"
                         whileInView="visible"
