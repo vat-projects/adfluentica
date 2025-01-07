@@ -28,6 +28,7 @@ const CustomSelect = ({ name, options, ...props }) => {
                 className={touched[name] && errors[name] ? "invalid" : ""}
                 classNamePrefix="react-select"
                 instanceId={selectId}
+                placeholder=""
             />
             {/* {touched[name] && errors[name] ? (
                 <div className="error">{errors[name]}</div>
@@ -87,7 +88,6 @@ function RequestForm() {
     };
 
     const options = [
-        { value: "", label: "" },
         { value: "advertiser", label: "Advertiser" },
         { value: "publisher", label: "Publisher" },
     ];

@@ -410,6 +410,7 @@ body {
               display: flex;
               align-items: center;
               min-height: fit-content;
+              box-shadow: none !important;
 
               .react-select__value-container {
                 padding: 0;
@@ -444,6 +445,25 @@ body {
 
             .react-select__menu {
               z-index: 99;
+              border-radius: 8px;
+
+              .react-select__menu-list {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 0;
+
+                .react-select__option {
+                  background-color: transparent;
+                  color: #172554;
+                  font-family: "Space Grotesk", serif;
+                  font-weight: 500;
+                  cursor: pointer;
+                  transition: all 0.3s ease 0s;
+                  &:hover {
+                    color: #1d4ed8;
+                  }
+                }
+              }
             }
           }
         }
@@ -697,6 +717,7 @@ body {
               display: flex;
               align-items: center;
               min-height: fit-content;
+              box-shadow: none !important;
 
               .react-select__value-container {
                 padding: 0;
@@ -731,6 +752,25 @@ body {
 
             .react-select__menu {
               z-index: 99;
+              border-radius: 8px;
+
+              .react-select__menu-list {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 0;
+
+                .react-select__option {
+                  background-color: transparent;
+                  color: #172554;
+                  font-family: "Space Grotesk", serif;
+                  font-weight: 500;
+                  cursor: pointer;
+                  transition: all 0.3s ease 0s;
+                  &:hover {
+                    color: #1d4ed8;
+                  }
+                }
+              }
             }
           }
         }
@@ -990,6 +1030,7 @@ body {
               display: flex;
               align-items: center;
               min-height: fit-content;
+              box-shadow: none !important;
 
               .react-select__value-container {
                 padding: 0;
@@ -1024,6 +1065,25 @@ body {
 
             .react-select__menu {
               z-index: 99;
+              border-radius: 8px;
+
+              .react-select__menu-list {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 0;
+
+                .react-select__option {
+                  background-color: transparent;
+                  color: #172554;
+                  font-family: "Space Grotesk", serif;
+                  font-weight: 500;
+                  cursor: pointer;
+                  transition: all 0.3s ease 0s;
+                  &:hover {
+                    color: #1d4ed8;
+                  }
+                }
+              }
             }
           }
         }
