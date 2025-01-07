@@ -111,10 +111,19 @@
             background-size: cover;
             background-position: center center;
             height: 193px;
+            transition: all 0.3s ease 0s;
             @media (max-width: 767px) {
                 width: 100%;
                 height: 78px;
                 background-image: url("/images/header/header-img-02.jpg");
+            }
+
+            &._img-02 { 
+                background-image: url('/images/about/about-img-01.jpg');
+            }
+
+            &._img-03 { 
+                background-image: url('/images/contacts/contacts-img-01.jpg');
             }
         }
 

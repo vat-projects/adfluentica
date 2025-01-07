@@ -9,6 +9,7 @@ import RequestButton from "./RequestButton";
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState({});
+  const [activeImageClass, setActiveImageClass] = useState(''); // Состояние для класса
   const pathname = usePathname();
 
   const menuOpen = () => {
@@ -25,6 +26,16 @@ const Header = () => {
 
       return newState;
     });
+  };
+
+  // Функция для изменения класса при ховере
+  const handleHover = (className) => {
+    setActiveImageClass(className); // Устанавливаем соответствующий класс
+  };
+
+  // Функция для сброса класса при уходе с элемента
+  const handleLeave = () => {
+    setActiveImageClass(''); // Сбрасываем класс
   };
 
   useEffect(() => {
@@ -85,7 +96,9 @@ const Header = () => {
               </div>
             </div>
             <div className="header__menu">
-              <div className="col-01"></div>
+              <div
+                className={`col-01 ${activeImageClass}`}
+              ></div>
               <div className="col-02">
                 <ul className="list">
                   <li className="li">
@@ -103,14 +116,32 @@ const Header = () => {
                       Industry Focus
                     </Link>
                   </li>
-                  <li className="li">
-                    <Link href="/faq" className="link">FAQ</Link>
+                  <li
+                    className="li"
+                    onMouseEnter={() => handleHover('_img-01')} // Ховер на FAQ
+                    onMouseLeave={handleLeave}
+                  >
+                    <Link href="/faq" className="link">
+                      FAQ
+                    </Link>
                   </li>
-                  <li className="li">
-                    <Link href="/about-us" className="link">About Us</Link>
+                  <li
+                    className="li"
+                    onMouseEnter={() => handleHover('_img-02')} // Ховер на About Us
+                    onMouseLeave={handleLeave}
+                  >
+                    <Link href="/about-us" className="link">
+                      About Us
+                    </Link>
                   </li>
-                  <li className="li">
-                    <Link href="/contact-us" className="link">Contact Us</Link>
+                  <li
+                    className="li"
+                    onMouseEnter={() => handleHover('_img-03')} // Ховер на Contact Us
+                    onMouseLeave={handleLeave}
+                  >
+                    <Link href="/contact-us" className="link">
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
               </div>
