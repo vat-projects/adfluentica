@@ -89,7 +89,6 @@ function FormAdvertisers() {
     };
 
     const options = [
-        { value: "", label: "" },
         { value: "landing_page", label: "Landing Page" },
         { value: "website_marketing_design", label: "Website Marketing Design" },
         { value: "content", label: "Content" },
