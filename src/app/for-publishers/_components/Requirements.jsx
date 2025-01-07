@@ -1,4 +1,5 @@
 "use client";
+import RequestButton from "@/components/RequestButton";
 import { fadeInUp } from "@/utils/animations";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -18,7 +19,7 @@ const Requirements = () => {
         >
           OUR REQUIREMENTS
         </motion.h2>
-        <Link href="#">Try Now</Link>
+        <RequestButton text={"Try now"} />
         <div className="requirements__body">
           <motion.div
             initial="hidden"
