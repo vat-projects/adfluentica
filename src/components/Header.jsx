@@ -5,6 +5,7 @@ import "@/styles/base.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import RequestButton from "./RequestButton";
+import LangSwitcher from "./LangSwitcher";
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -82,6 +83,9 @@ const Header = () => {
                     </li>
                   </ul>
                 </nav>
+                <div className="language">
+                  <LangSwitcher />
+                </div>
                 <button
                   className="header__menu-btn"
                   onClick={menuOpen}

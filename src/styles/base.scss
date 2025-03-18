@@ -119,6 +119,9 @@ body {
   }
 }
 
+.skiptranslate { 
+  display: none !important;
+}
 ._container {
   max-width: $maxWidthContainer + px;
   margin: 0 auto;
