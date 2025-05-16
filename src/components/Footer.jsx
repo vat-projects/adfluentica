@@ -66,13 +66,13 @@ const Footer = () => {
                 <Link href="/" className="footer__logo"><img src="/images/logo-footer.svg" alt="logo" /></Link>
                 <ul className="footer__socials">
                   <li className="footer__social">
-                    <Link href="#" className="footer__social-link _facebook"> <Facebook /> </Link>
+                    <Link href="https://www.facebook.com/adfluenticacom/" className="footer__social-link _facebook"> <Facebook /> </Link>
                   </li>
-                  <li className="footer__social">
+                  {/* <li className="footer__social">
                     <Link href="#" className="footer__social-link _instagram"> <Instagram /> </Link>
-                  </li>
+                  </li> */}
                   <li className="footer__social">
-                    <Link href="#" className="footer__social-link _linkedin"> <Linkedin /> </Link>
+                    <Link href="https://linkedin.com/company/adfluentica/" className="footer__social-link _linkedin"> <Linkedin /> </Link>
                   </li>
                 </ul>
               </div>
