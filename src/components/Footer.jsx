@@ -6,6 +6,7 @@ import Link from "next/link";
 import Facebook from "@/icons/social/Facebook";
 import Instagram from "@/icons/social/Instagram";
 import Linkedin from "@/icons/social/Linkedin";
+import X from "@/icons/social/X";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -68,8 +69,11 @@ const Footer = () => {
                   <li className="footer__social">
                     <Link href="https://www.facebook.com/adfluenticacom/" className="footer__social-link _facebook"> <Facebook /> </Link>
                   </li>
+                  {/* <li className="footer__social">
+                    <Link href="#" className="footer__social-link _instagram"> <Instagram /> </Link>
+                  </li> */}
                   <li className="footer__social">
-                    <Link href="https://x.com/adfluentica" className="footer__social-link _instagram"> <Instagram /> </Link>
+                    <Link href="https://x.com/adfluentica/" className="footer__social-link _twitter"> <X /> </Link>
                   </li>
                   <li className="footer__social">
                     <Link href="https://linkedin.com/company/adfluentica/" className="footer__social-link _linkedin"> <Linkedin /> </Link>
