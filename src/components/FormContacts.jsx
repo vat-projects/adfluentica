@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-input-2";
 import useCountryCode from "@/utils/useCountryCode";
 import Link from "next/link";
 import Snipper from "@/icons/loading/Snipper";
+import { excludedCountries } from "@/utils/countries";
 
 function FormContacts() {
   const countryCode = useCountryCode();
@@ -15,10 +16,15 @@ function FormContacts() {
 
   const validationSchema = Yup.object({
     yourName: Yup.string().required("The field is required."),
-    email: Yup.string().email("Invalid email address.").required("The field is required."),
+    email: Yup.string()
+      .email("Invalid email address.")
+      .required("The field is required."),
     phone: Yup.string().required("The field is required."),
     message: Yup.string().required("The field is required."),
-    agreeToPolicy: Yup.boolean().oneOf([true], "You must agree to the Privacy Policy."),
+    agreeToPolicy: Yup.boolean().oneOf(
+      [true],
+      "You must agree to the Privacy Policy."
+    ),
   });
 
   const initialValues = {
@@ -29,7 +35,10 @@ function FormContacts() {
     agreeToPolicy: false,
   };
 
-  const handleSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+  const handleSubmit = async (
+    values,
+    { setSubmitting, resetForm, setStatus }
+  ) => {
     try {
       const response = await fetch("/api/emails/contact", {
         method: "POST",
@@ -67,28 +76,42 @@ function FormContacts() {
           {({ isSubmitting, status, errors, touched }) => (
             <div className="wrapper">
               <Form className="form">
-
-                <div className={`row ${touched.yourName && errors.yourName ? "invalid" : ""}`}>
+                <div
+                  className={`row ${
+                    touched.yourName && errors.yourName ? "invalid" : ""
+                  }`}
+                >
                   <span className="label">Your Name</span>
                   <Field name="yourName">
                     {({ field }) => <input {...field} type="text" />}
                   </Field>
                 </div>
 
-                <div className={`row _phone ${touched.phone && errors.phone ? "invalid" : ""}`}>
+                <div
+                  className={`row _phone ${
+                    touched.phone && errors.phone ? "invalid" : ""
+                  }`}
+                >
                   <span className="label">Your Phone</span>
                   <Field name="phone">
                     {({ field }) => (
                       <PhoneInput
                         country={countryCode}
+                        excludeCountries={excludedCountries}
                         value={field.value}
-                        onChange={(value) => field.onChange({ target: { name: "phone", value } })}
+                        onChange={(value) =>
+                          field.onChange({ target: { name: "phone", value } })
+                        }
                       />
                     )}
                   </Field>
                 </div>
 
-                <div className={`row ${touched.email && errors.email ? "invalid" : ""}`}>
+                <div
+                  className={`row ${
+                    touched.email && errors.email ? "invalid" : ""
+                  }`}
+                >
                   <span className="label">Your Email</span>
                   <Field name="email">
                     {({ field }) => <input {...field} type="email" />}
@@ -102,14 +125,26 @@ function FormContacts() {
                   </Field>
                 </div>
 
-                <div className={`row _policy ${touched.agreeToPolicy && errors.agreeToPolicy ? "invalid" : ""}`}>
+                <div
+                  className={`row _policy ${
+                    touched.agreeToPolicy && errors.agreeToPolicy
+                      ? "invalid"
+                      : ""
+                  }`}
+                >
                   <Field name="agreeToPolicy">
                     {({ field }) => (
-                      <label className={`checkbox-label ${field.value ? "_active" : ""}`}>
+                      <label
+                        className={`checkbox-label ${
+                          field.value ? "_active" : ""
+                        }`}
+                      >
                         <input {...field} type="checkbox" />
                         <span>
-                          I accept the <Link href="/terms-of-service">Terms of Service</Link> and
-                          understand that my data will be securely stored in accordance with the policy.
+                          I accept the{" "}
+                          <Link href="/terms-of-service">Terms of Service</Link>{" "}
+                          and understand that my data will be securely stored in
+                          accordance with the policy.
                         </span>
                       </label>
                     )}
@@ -120,10 +155,16 @@ function FormContacts() {
                 </div>
 
                 {Object.keys(errors).length > 0 && (
-                  <span className="general-error">Please correct the errors above.</span>
+                  <span className="general-error">
+                    Please correct the errors above.
+                  </span>
                 )}
 
-                <button type="submit" className="button" disabled={isSubmitting}>
+                <button
+                  type="submit"
+                  className="button"
+                  disabled={isSubmitting}
+                >
                   Submit
                 </button>
                 {isSubmitting && (
@@ -152,10 +193,7 @@ function FormContacts() {
           <div className="success-message__wrapper">
             <span>Thank you for your request!</span>
             We will review it and contact you shortly.
-            <button
-              className="button"
-              onClick={() => window.location.reload()}
-            >
+            <button className="button" onClick={() => window.location.reload()}>
               Return
             </button>
           </div>
