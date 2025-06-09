@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-const nodemailer = require("nodemailer");
+import sgMail from '@sendgrid/mail';
 
 export async function POST(request) {
   try {
@@ -21,29 +21,21 @@ export async function POST(request) {
       attachFiles = [], // Default to empty array if not present
     } = bodyJSON;
 
-    // Configure nodemailer with Gmail SMTP
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
+    // Configure SendGrid
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     // Process attachments
     const attachments = attachFiles.map(file => ({
       filename: file.name,
-      content: Buffer.from(file.base64, 'base64'),
-      encoding: 'base64',
+      content: Buffer.from(file.base64, 'base64').toString('base64'),
+      type: file.type,
+      disposition: 'attachment'
     }));
 
     // Set up email data for the recipient
-    const mailOptionsRecipient = {
-      from: '"Your Company" <noreply@nexoria.ai>',
-      to: "noreply@nexoria.ai",
+    const recipientMsg = {
+      to: "noreply@adfluentica.com",
+      from: "noreply@adfluentica.com",
       subject: "Event Request Submission",
       text: `
           Contact Person: ${contactPerson}
@@ -88,8 +80,8 @@ export async function POST(request) {
 
     }; */
 
-    // Send emails
-    await transporter.sendMail(mailOptionsRecipient);
+    // Send email
+    await sgMail.send(recipientMsg);
     /* await transporter.sendMail(mailOptionsClient); */
 
     return NextResponse.json({ message: "Success: emails were sent" });

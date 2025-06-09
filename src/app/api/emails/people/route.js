@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
 
 const getFileTypeFromBase64 = (base64) => {
   const mimeType = base64.split(';')[0].split(':')[1];
@@ -8,24 +8,31 @@ const getFileTypeFromBase64 = (base64) => {
 
 export async function POST(request) {
   try {
-
     const { yourName, yourDomain, email, phone, attachFiles, explanation } = await request.json();
 
     if (!yourName || !yourDomain || !email || !phone) {
       return NextResponse.json({ message: 'Required fields missing' }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail', 
-      auth: {
-        user: process.env.EMAIL_USER, 
-        pass: process.env.EMAIL_PASS, 
-      },
-    });
+    // Configure SendGrid
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'noreply@nexoria.ai', 
+    const attachments = attachFiles ? attachFiles.map((fileBase64, index) => {
+      const base64Data = fileBase64.split(',')[1];
+      const fileType = getFileTypeFromBase64(fileBase64);
+      const fileName = `file-${index}.${fileType}`;
+
+      return {
+        filename: fileName,
+        content: base64Data,
+        type: fileType,
+        disposition: 'attachment'
+      };
+    }) : [];
+
+    const msg = {
+      to: 'noreply@adfluentica.com',
+      from: 'noreply@adfluentica.com',
       subject: 'Form to join the team - page People',
       text: `
         Name: ${yourName}
@@ -34,22 +41,10 @@ export async function POST(request) {
         Phone: ${phone}
         Explanation: ${explanation}
       `,
-      attachments: attachFiles ? attachFiles.map((fileBase64, index) => {
-
-        const base64Data = fileBase64.split(',')[1]; 
-        const buffer = Buffer.from(base64Data, 'base64');
-
-        const fileType = getFileTypeFromBase64(fileBase64);
-        const fileName = `file-${index}.${fileType}`;
-
-        return {
-          filename: fileName, 
-          content: buffer,
-        };
-      }) : [],
+      attachments: attachments,
     };
 
-    await transporter.sendMail(mailOptions);
+    await sgMail.send(msg);
 
     /* const mailOptionsClient = {
       from: '"Nexoria" <noreply@nexoria.ai>',

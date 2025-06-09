@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-const nodemailer = require("nodemailer");
+import sgMail from '@sendgrid/mail';
 
 export async function POST(request) {
   try {
@@ -7,27 +7,19 @@ export async function POST(request) {
     const bodyJSON = JSON.parse(requestBody);
     const { firstName, email, phone, service, company, website, activity, agreeToPolicy } = bodyJSON;
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
+    // Configure SendGrid
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    const mailOptionsRecipient = {
-      from: '"Nexoria" <noreply@nexoria.ai>',
-      to: "noreply@nexoria.ai",
+    const recipientMsg = {
+      to: "noreply@adfluentica.com",
+      from: "noreply@adfluentica.com",
       subject: "Order Form Submission",
       text: `Name: ${firstName}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nCompany name: ${company}\nCompany website: ${website}\nActivity: ${activity}\nAgree to Policy: ${agreeToPolicy}`,
     };
 
-    const mailOptionsClient = {
-      from: '"Nexoria" <noreply@nexoria.ai>',
+    const clientMsg = {
       to: email,
+      from: "noreply@adfluentica.com",
       subject: "Your Service Request Has Been Received",
       html: `
          <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif; border-right: 1px solid #222222; border-left: 1px solid #222222;">
@@ -63,8 +55,8 @@ export async function POST(request) {
       `,
     };
 
-    await transporter.sendMail(mailOptionsRecipient);
-    await transporter.sendMail(mailOptionsClient);
+    await sgMail.send(recipientMsg);
+    await sgMail.send(clientMsg);
 
     console.log("Emails sent successfully.");
     return NextResponse.json({ message: "Success: emails were sent" });
