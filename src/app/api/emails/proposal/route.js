@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-const nodemailer = require("nodemailer");
+import sgMail from '@sendgrid/mail';
 
 export async function POST(request) {
   try {
@@ -7,30 +7,21 @@ export async function POST(request) {
     const bodyJSON = JSON.parse(requestBody);
     const { firstName, lastName, email, phone, website, company, challenges, goals } = bodyJSON;
 
-    // Configure nodemailer with Gmail SMTP
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER, // Your Gmail email
-        pass: process.env.EMAIL_PASS, // Your Gmail password or app password
-      },
-      tls: {
-        rejectUnauthorized: false, // This bypasses the certificate validation
-      },
-    });
+    // Configure SendGrid
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     // Set up email data for the recipient
-    const mailOptionsRecipient = {
-      from: '"Nexoria" <noreply@nexoria.ai>', // Sender address
-      to: "noreply@nexoria.ai", // Change to your recipient's email
+    const recipientMsg = {
+      to: "noreply@adfluentica.com",
+      from: "noreply@adfluentica.com",
       subject: "Get a Proposal Confirmation",
       text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nCompany website: ${website}\nCompany name: ${company}\nChallenges: ${challenges}\nGoals: ${goals}`,
     };
 
     // Set up email data for the client
-    const mailOptionsClient = {
-      from: '"Nexoria" <noreply@nexoria.ai>', // Sender address
-      to: email, // Client's email
+    const clientMsg = {
+      to: email,
+      from: "noreply@adfluentica.com",
       subject: "Get a Proposal Confirmation",
       html: `
         <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif">
@@ -64,10 +55,9 @@ export async function POST(request) {
       `,
     };
 
-    // Send email to the recipient
-    await transporter.sendMail(mailOptionsRecipient);
-    // Send email to the client
-    //await transporter.sendMail(mailOptionsClient);
+    // Send emails
+    await sgMail.send(recipientMsg);
+    //await sgMail.send(clientMsg);
 
     return NextResponse.json({ message: "Success: emails were sent" });
   } catch (error) {

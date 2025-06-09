@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-const nodemailer = require("nodemailer");
+import sgMail from '@sendgrid/mail';
 
 export async function POST(request) {
   try {
@@ -14,20 +14,12 @@ export async function POST(request) {
       are,
     } = bodyJSON;
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
+    // Configure SendGrid
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    const mailOptionsRecipient = {
-      from: '"Adfluentica" <noreply@adfluentica.com>',
-      to: "noreply@adfluentica.com", //
+    const recipientMsg = {
+      to: "noreply@adfluentica.com",
+      from: "noreply@adfluentica.com",
       subject: "From For Advertisers page",
       text: `Name: ${yourName}
 Email: ${email}
@@ -37,9 +29,9 @@ Message: ${message}
 Are: ${are}`,
     };
 
-    const mailOptionsClient = {
-      from: '"Adfluentica" <noreply@adfluentica.com>',
+    const clientMsg = {
       to: email,
+      from: "noreply@adfluentica.com",
       subject: "Your Development Request Received",
       html: `
             <table width="640" style="border-collapse: collapse; margin: 0 auto; font-style: sans-serif;">
@@ -52,7 +44,7 @@ Are: ${are}`,
         <tr>
             <td style="padding: 50px 40px; font-family: Roboto, sans-serif; color:#0A0A0A;">
                 <h2 style="text-align: left; font-size: 20px;">Dear ${yourName},</h2>
-                <p style="font-size: 16px; line-height: 19px;">Thank you for submitting your development request to Adfluentica. We’ve received the details and will be in touch soon to discuss your project further.</p>
+                <p style="font-size: 16px; line-height: 19px;">Thank you for submitting your development request to Adfluentica. We've received the details and will be in touch soon to discuss your project further.</p>
                 <p style="font-size: 16px; line-height: 19px;">If you have any immediate questions or need to provide additional information, feel free to reply to this email.</p>
                 <p style="font-size: 16px; line-height: 19px;">We look forward to helping you bring your project to life!</p>
                 <p style="font-size: 16px; line-height: 19px; font-weight: 600;">
@@ -88,9 +80,8 @@ Are: ${are}`,
       `,
     };
 
-    await transporter.sendMail(mailOptionsRecipient);
-
-    await transporter.sendMail(mailOptionsClient);
+    await sgMail.send(recipientMsg);
+    await sgMail.send(clientMsg);
 
     return NextResponse.json({ message: "Success: emails were sent" });
   } catch (error) {
