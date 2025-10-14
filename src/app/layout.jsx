@@ -7,6 +7,7 @@ import Preloader from "@/components/Preloader";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { PopupsProvider } from "@/context/PopupsContext";
 import OrderPopup from "@/components/OrderPopup";
+import { CookiePopup } from "@/components/CookiePopup";
 
 
 const urbanist = Urbanist({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
           <Header />
           <main className="site">{children}</main>
           <Footer />
+          <CookiePopup />
           <OrderPopup />
         </PopupsProvider>
       </body>
