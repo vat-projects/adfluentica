@@ -44,9 +44,9 @@ const Footer = () => {
               <div className="footer__col-02">
                 <ul className="footer__contacts">
                   <li className="footer__contact">
-                    <Link href="tel:+447482191976" className="footer__contact-link">
+                    <Link href="tel:+447878752957" className="footer__contact-link">
                       Phone: <br />
-                      +447482191976
+                      +447878752957
                     </Link>
                   </li>
                   <li className="footer__contact">

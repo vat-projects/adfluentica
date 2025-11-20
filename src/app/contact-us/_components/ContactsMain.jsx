@@ -42,10 +42,10 @@ const ContactsMain = () => {
                 <li className="contacts-main__item">
                   Phone:
                   <Link
-                    href="tel:+447482191976"
+                    href="tel:+447878752957"
                     className="contacts-main__link"
                   >
-                    +447482191976
+                    +447878752957
                   </Link>
                 </li>
               </motion.ul>
