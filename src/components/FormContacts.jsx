@@ -8,11 +8,13 @@ import useCountryCode from "@/utils/useCountryCode";
 import Link from "next/link";
 import Snipper from "@/icons/loading/Snipper";
 import { excludedCountries } from "@/utils/countries";
+import ReCaptcha from "react-google-recaptcha";
 
 function FormContacts() {
   const countryCode = useCountryCode();
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(true);
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
   const validationSchema = Yup.object({
     yourName: Yup.string().required("The field is required."),
@@ -33,6 +35,10 @@ function FormContacts() {
     phone: "",
     message: "",
     agreeToPolicy: false,
+  };
+
+  const onCaptchaVerify = (token) => {
+    setIsCaptchaVerified(!!token);
   };
 
   const handleSubmit = async (
@@ -159,7 +165,7 @@ function FormContacts() {
                     Please correct the errors above.
                   </span>
                 )}
-
+                <ReCaptcha sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} onChange={onCaptchaVerify} />
                 <button
                   type="submit"
                   className="button"
@@ -180,6 +186,7 @@ function FormContacts() {
                   <button
                     className="button"
                     onClick={() => window.location.reload()}
+                    disabled={!isCaptchaVerified}
                   >
                     Return
                   </button>
@@ -193,7 +200,7 @@ function FormContacts() {
           <div className="success-message__wrapper">
             <span>Thank you for your request!</span>
             We will review it and contact you shortly.
-            <button className="button" onClick={() => window.location.reload()}>
+            <button className="button" onClick={() => window.location.reload()} disabled={!isCaptchaVerified}>
               Return
             </button>
           </div>
