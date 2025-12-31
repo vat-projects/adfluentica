@@ -76,7 +76,7 @@ const Footer = () => {
                     <Link href="https://x.com/adfluentica/" className="footer__social-link _twitter"> <X /> </Link>
                   </li>
                   <li className="footer__social">
-                    <Link href="https://www.linkedin.com/company/adfluenticacom" className="footer__social-link _linkedin"> <Linkedin /> </Link>
+                    <Link href="https://www.linkedin.com/company/adfluentica" className="footer__social-link _linkedin"> <Linkedin /> </Link>
                   </li>
                 </ul>
               </div>
