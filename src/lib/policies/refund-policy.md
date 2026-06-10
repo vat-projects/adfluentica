@@ -51,4 +51,3 @@ If you have any questions about this Refund Policy or would like to discuss your
 
 - **Website:** adfluentica.com
 - **Email:** info@adfluentica.com
-- **Phone:** +447878752957

@@ -43,12 +43,12 @@ const Footer = () => {
               </div>
               <div className="footer__col-02">
                 <ul className="footer__contacts">
-                  <li className="footer__contact">
+                  {/**<li className="footer__contact">
                     <Link href="tel:+447878752957" className="footer__contact-link">
                       Phone: <br />
                       +447878752957
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="footer__contact">
                     <Link href="mailto:info@adfluentica.com" className="footer__contact-link">
                       Email: <br />

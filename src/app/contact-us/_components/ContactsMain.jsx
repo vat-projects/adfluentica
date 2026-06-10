@@ -39,7 +39,7 @@ const ContactsMain = () => {
                     info@adfluentica.com
                   </Link>
                 </li>
-                <li className="contacts-main__item">
+                {/**<li className="contacts-main__item">
                   Phone:
                   <Link
                     href="tel:+447878752957"
@@ -47,7 +47,7 @@ const ContactsMain = () => {
                   >
                     +447878752957
                   </Link>
-                </li>
+                </li> */}
               </motion.ul>
             </div>
             <motion.div
